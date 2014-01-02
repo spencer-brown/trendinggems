@@ -39,23 +39,15 @@ LETTERS_IN_ALPHA.times do |i|
 
 			# set homepage and source_code addresses
 			homepage = gem_hash["homepage_uri"]
-			# puts "gem_hash homepage:"
-			# puts homepage
 			source_code = gem_hash["source_code_uri"]
-			# puts "gem_hash source_code:"
-			# puts source_code
 
 			# verify that homepage is a github. if not, try source code page. otherwise, skip to next
 			if homepage
 				github = homepage if is_github homepage
-				# puts "homepage github:"
-				# puts github
 			end
 
 			if source_code
 				github = source_code if is_github source_code
-				# puts "source_code github:"
-				# puts github
 			end
 
 			if github.nil?
@@ -64,11 +56,6 @@ LETTERS_IN_ALPHA.times do |i|
 
 			# set number of downloads
 			downloads = gem_hash["downloads"]
-
-			# create new entry in sqlite for gem
-			# Blah.create(:name => gem_name,
-			# 			    	:github => github,
-			# 			    	:downloads => downloads)
 
 			blah = Parse::Object.new("Gem")
 			blah["Name"] = gem_name
